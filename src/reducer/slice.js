@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import produce from 'immer'
 
 export const counterSlice = createSlice({
   name: 'counter',
@@ -21,31 +20,17 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload
     },
-    test: (state, action) => {
-      // case 1
-      return produce(state, draft => {
-        draft.test = action.payload.test
+    addMoney: (state, action) => {
+      // case 1 recreate object
+      state.test = {...action.payload.money}
 
-        return draft
-      })
-
-      // case 2
-      /*return produce(state, draft => {
-        draft.test = {...action.payload.test}
-
-        return draft
-      })*/
-
-      // case 3 no mutate
-      //state.test = {...action.payload.test}
-
-      // case 4 mutate
-      //state.test = action.payload.test
+      // case 2 mutate
+      state.test = action.payload.money
     },
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, test } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, addMoney } = counterSlice.actions
 
 export default counterSlice.reducer

@@ -1,17 +1,17 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment, test } from './slice'
+import { decrement, increment, addMoney } from './reducer/slice'
 
 
 export default function Counter(props) {
-  const {globalData} = props
+  const {money} = props
 
   const count = useSelector(state => state.counter.value)
-  const data = useSelector(state => state.counter.test)
+  const moneyData = useSelector(state => state.counter.money)
   const dispatch = useDispatch()
 
   // check whether produce make this object to a new one?
-  console.log(data === globalData, data, globalData)
+  console.log(moneyData === money, moneyData, money)
 
   return (
     <div>
@@ -23,10 +23,9 @@ export default function Counter(props) {
         <button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
           Decrement
         </button>
-        <button aria-label="Decrement value" onClick={() => dispatch(test({test: globalData}))}>
-          test
+        <button aria-label="Decrement value" onClick={() => dispatch(addMoney({money: money}))}>
+          Add money
         </button>
-        {data?.a}{data?.b}
       </div>
     </div>
   )

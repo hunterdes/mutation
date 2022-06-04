@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slice.js'
+import counterReducer from './reducer/slice.js'
+import tankReducer from './reducer/tank.js'
 
 export default configureStore({
   reducer: {
-    counter: counterReducer
+    counter: counterReducer,
+    tank: tankReducer
   }
 })
