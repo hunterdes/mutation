@@ -22,10 +22,10 @@ export const counterSlice = createSlice({
     },
     addMoney: (state, action) => {
       // case 1 recreate object
-      state.test = {...action.payload.money}
+      //state.money = {...action.payload.money}
 
       // case 2 mutate
-      state.test = action.payload.money
+      state.money = action.payload.money
     },
   }
 })

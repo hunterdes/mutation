@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment, addMoney } from './reducer/slice'
 
 
 export default function Counter(props) {
-  const {money} = props
+  //const {money} = props
+
+  const money = useMemo(() => {return {unit: 'USD', amount: 200}}, [])
 
   const count = useSelector(state => state.counter.value)
   const moneyData = useSelector(state => state.counter.money)
